@@ -62,5 +62,16 @@ pipeline {
                 echo 'Deployment completed successfully!'
             }
         }
+      stage('Debug env') {
+    steps {
+        sh '''
+          echo "Hostname: $(hostname)"
+          echo "User: $(whoami)"
+          echo "PWD: $(pwd)"
+          which docker || echo "docker not found"
+          docker ps || echo "docker ps failed"
+        '''
+    }
+}
     }  
 }  
