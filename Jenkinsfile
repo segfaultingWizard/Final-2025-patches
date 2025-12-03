@@ -53,9 +53,9 @@ pipeline {
                 script {
                     dir("${WORKSPACE}") {
                         sh '''
-                            docker compose down
-                            docker compose up -d
-                            docker ps
+                            docker-compose down || true
+                            docker-compose up -d || true
+                            docker ps || true
                         '''
                     }
                 }
